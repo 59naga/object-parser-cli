@@ -1,0 +1,22 @@
+# Quick boot options
+sudo: false
+cache:
+  directories:
+    - node_modules
+
+# Language options
+language: node_js
+node_js:
+  - '0.10'
+
+# Npm publish options
+deploy:
+  provider: npm
+  email: i59naga@icloud.com
+  api_key:
+    secure: WmoWkoQ1/cEjuF/6igRYDcsGY6otE8EOwvVdnED/miGkjhrFIFy3RSumDDmizfvSwbGnTi7tYRPnV6wiyH1XFdRe4SmUnmrJET/tERnR8hlWu+Ed4D4bu6G2vfr3oigsF5pF+7geh4+wP+OfUST3UdyEgMrNTPF5KbaQLPy816YlZ853ZKyWm7tzUzJQJyDsJcMubLfEzBG6c2hj9g+WGLW9aGbw5NjYArsvzIFNrHnsYRBuigvZWCNfYOd/GWD6Q2uLWFdRITyjyLSfZfQWlwaE91BQCav6DNnB83S0kXJa6Jb9+RJbDzzXbVZnTzQoxeFMqnTamjxjxjuwyG4Tv0lWioaA4C4QY2V92b5M0E8JLlsHPOIagxxASfRvISx4iJXuoTcdfxJN6DH1cQUKzWWHsBEvjaKpvvzDRUCWhvsoPZXvk+ZQ+ZfjXpu1rgCNME4GLLNueu7gkwczfQsvpHSYm3mT2nz/kSx1b0CIFGiECWQLW25jAfUzlTmDypXI9GNkpMXurwklZGViH86pWAsgKxgqjmtQqXkx5GroktPApZQIOM/GomKxaz1J/xVHGXBqpDpj0dOnk9e+wymmESyKuOwXMEEx8/RECi58SCaNZU6eDQ5uEJHubCSoKT9R2aEszSJ3CZo6laONHBNGJmkYjsx0+5eu/Pp4XfqdzhM=
+
+env:
+  global:
+    # COVERALLS_REPO_TOKEN
+    - secure: ijrNdWJfcjug+7wNvWTPwf4HCXxMmxlUiUdtf55mwxmqRZVAIIzDNOVPOQm6EdMBopyzy3OrwMk7nHNCWyNf1/b57iaP/M2Y12rheNIihDNjENU+xQsE4NUAqTcFb+8oJYGt1qjHsJGALtET9TyCaXC7NsnQ9BofSPVcyosUWtF5AAhILA/qEw/NYy8QEHKRFhVVMTmoCUFEsv4lKv8J1fpzbhk0dBcIXvc+W6rsRadS4rInZqgRi9cya3cSI4MeqS/2+9QtxUzhbkNNyEy2t7uxCspIOIc6k3JFuO2nRGFb4UN5psUEk6Zzbd7o77kGnPFET5OGpgGlOTNL+FfyncNokPVFhODqG7B3zOmfvT5L3dYcKbwMPVN6mIWZCLyzek7vn6D60Sx/9b8m/5fKPNeVVjjLySShC/bQf8wK8dqO6fiq0n8SWd/+c1tu+G8aeXjuHMd8D2d//tmvvwcq9VxoNrdDHjMAVpo1vsqKauNgRu0IAa4jAfyFrowPsUPEHxnIPahDyiWGLE4DfrN+yE7IF9Qq/uTRL9aprK56RYV2yW1Wv89yi6uAlWYy/sHbElFoi9SpN90D9L1zPeqOsmAp0DjyuwNn+0pzUyi8I50dMY2eLIRE9R1a2LjNOO6TZlxZ6aUNsluSrpULqujDACrymFfU4T8ApsREKhgEJYE=

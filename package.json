@@ -1,0 +1,76 @@
+{
+  "name": "object-parser-cli",
+  "version": "0.0.0-alpha.0",
+  "description": "Object preprocessor",
+
+  "bin": {
+    "opc": "bin/object-parser-cli"
+  },
+
+  "scripts": {
+    "cover": "jasminetea test --verbose --cover --report --timeout 1000",
+
+    "Developer commands":"",
+      "start": "$(jqn package scripts.cover) --watch",
+
+    "Travis-CI commands":"",
+      "test": "npm run cover",
+
+    "Npm update via Travis-CI":"",
+      "prepublish": "#npm run compile",
+      
+      "precompile": "npm install coffee-script --global",
+      "compile": "coffee --bare --compile index.coffee",
+      "postcompile": "coffee --output lib --bare --compile src"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run cover"
+    }
+  },
+  "files": [
+    ".npmignore",
+    "index.js",
+    "lib"
+  ],
+
+  "dependencies": {
+    "commander-file": "0.0.0-alpha.1",
+    "css-select": "^1.1.0",
+    "lodash": "^3.9.1",
+    "object-parser": "0.0.1-alpha.3"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.9.2",
+    "ghooks": "^0.3.2",
+    "jasminetea": "^0.1.30-rc.3",
+    "jqn": "0.0.3"
+  },
+
+  "keywords": [
+    "lodash",
+    "css-select",
+    "cli",
+    "json",
+    "json5",
+    "jsonml",
+    "yaml",
+    "html",
+    "xml"
+  ],
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+
+  "author": "59naga <i59naga@icloud.com> (http://berabou.me/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/59naga/object-parser-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/59naga/object-parser-cli/issues"
+  },
+  "homepage": "https://github.com/59naga/object-parser-cli"
+}
