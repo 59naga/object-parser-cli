@@ -8,6 +8,99 @@ $ npm install object-parser-cli
 $ opc -V
 # 0.0.0-alpha.0
 ```
+```bash
+#  Usage: opc <stdin/file/url> [path/locator...] [options...]
+#
+#  Options:
+#
+#    -h, --help              output usage information
+#    -V, --version           output the version number
+#    -t, --transform <type>  Transform to <json/json5/yaml/html>
+#    -i, --indent <digit>    Adjust indents <2>
+```
+
+# Transform
+## `opc <file/url> --transfrom <type>`
+## `<stdin> |  opc --transfrom <type>`
+convert other format the passed value. (alias `-t`)
+
+Support the `<type>`:
+* `json`
+* `json5`
+* `yaml`
+* `html`
+
+## JSON / JSON5 / [JsonML](http://www.jsonml.org/)
+```bash
+$ echo '[["body",["h1",{"foo":"bar"},"baz"]]]' > foo.json
+
+$ opc foo.json --transfrom json5
+# [["body",["h1",{foo:"bar"},"baz"]]]
+
+$ opc foo.json --transfrom yaml
+# -
+#   - body
+#   - [h1, {foo: bar}, baz]
+
+$ opc foo.json --transfrom html
+# <body>
+#   <h1 foo="bar">baz</h1>
+# </body>
+```
+
+## YAML
+```bash
+$ echo -e '-\n  - body\n  - [h1, {foo: bar}, baz]' > foo.yml
+
+$ opc foo.yml --transfrom json
+# [["body",["h1",{"foo":"bar"},"baz"]]]
+
+$ opc foo.yml --transfrom json5
+# [["body",["h1",{foo:"bar"},"baz"]]]
+
+$ opc foo.yml --transfrom html
+# <body>
+#   <h1 foo="bar">baz</h1>
+# </body>
+```
+
+# Traversing the `DOM`
+## `opc <file/url> locator [locator...]`
+## `<stdin> |  opc locator [locator...]`
+
+```bash
+# example.html: <title>foo</title>
+opc example.html title # foo
+
+# example.xml: <body id="baz"><h1>bar</h1></body>
+opc example.xml body # bar
+opc example.xml body?id # baz
+
+# example.json: [["li",["a",{"href":"booooop"}],"beep"]]
+opc example.json li # beep
+opc example.json "li a"?href # booooop
+```
+
+`locator` is `selector?attribute`.
+> `selector` is https://github.com/fb55/css-select#supported-selectors
+
+Get [text()](https://github.com/cheeriojs/cheerio#-selector-context-root-) if selector hasn't `?attribute`.
+
+# Get the value of `Object`
+## `opc <file/url> path [path...]`
+## `<stdin> | opc path [path...]`
+
+```bash
+# bower.json: {"name":"bar","ignore":["baz","beep","boop"]}
+opc bower name # bar
+opc bower ignore # baz beep boop
+opc bower name ignore # bar baz beep boop
+
+# .travis.yml: language: node_js
+opc .travis.yml language # node_js
+```
+
+> `path` is https://lodash.com/docs#get
 
 License
 ---

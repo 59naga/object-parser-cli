@@ -1,0 +1,5 @@
+<ul>
+  <li style="color:red">foo</li>
+  <li title="Some hover text." style="color:green">bar</li>
+  <li><span class="code-example-third">baz</span></li>
+</ul>
