@@ -94,6 +94,8 @@ $ opc bower name ignore # bar baz beep boop
 $ opc .travis.yml language # node_js
 ```
 
+Note: extension __`.json`__ is optional.
+
 > `path` is https://lodash.com/docs#get
 
 License
