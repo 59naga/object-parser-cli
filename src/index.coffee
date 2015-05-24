@@ -13,7 +13,6 @@ class CLI extends CommandFile
   constructor: ->
     super
     @config.fileExtension= '.json'
-    @config.stdinTimeout= 50
 
     @version require('../package').version
     @usage '<stdin/file/url> [path/locator...] [options...]'

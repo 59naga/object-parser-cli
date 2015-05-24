@@ -1,6 +1,6 @@
 {
   "name": "object-parser-cli",
-  "version": "0.0.0-alpha.0",
+  "version": "0.0.0",
   "description": "Object preprocessor",
 
   "bin": {
@@ -42,7 +42,7 @@
   "devDependencies": {
     "coffee-script": "^1.9.2",
     "ghooks": "^0.3.2",
-    "jasminetea": "^0.1.30-rc.3",
+    "jasminetea": "^0.2.0-alpha.3",
     "jqn": "0.0.3"
   },
 
