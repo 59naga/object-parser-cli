@@ -49,7 +49,9 @@ describe 'CLI',->
       $opc 'test/fixture.xml -t json5 -i 0'
       .spread (cli,stdout)->
 
+        # coffeelint: disable=max_line_length
         expect(stdout).toBe '[["ul",["li",{style:"color:red"},"foo"],["li",{title:"Some hover text.",style:"color:green"},"bar"],["li",["span",{class:"code-example-third"},"baz"]]]]'
+        # coffeelint: enable=max_line_length
         done()
 
   describe 'Use DOM',->
@@ -116,3 +118,12 @@ describe 'CLI',->
 
         expect(stdout).toBe 'node_js'
         done()
+
+  describe 'Change separator',->
+    it '$ opc package files',(done)->
+      $opc 'package files --separator "&&"'
+      .spread (cli,stdout)->
+
+        expect(stdout).toBe pkg.files.join '&&'
+        done()
+  

@@ -11,18 +11,19 @@ $ opc -V
 ```bash
 $ opc
 
-#  Usage: opc <stdin/file/url> [path/locator...] [options...]
+#  Usage: opc <file/url> [path/locator...] [options...]
 #
 #  Options:
 #
 #    -h, --help              output usage information
+#    -S, --stdin             use the stdin
 #    -V, --version           output the version number
 #    -t, --transform <type>  Transform to <json/json5/yaml/html>
 #    -i, --indent <digit>    Adjust indents <2>
 ```
 
 # Transform
-## `opc <stdin/file/url> --transfrom <type>`
+## `opc <file/url> --transfrom <type>`
 Convert other format the passed value. (alias `-t`)
 Support the `<type>`: `json`, `json5`, `yaml`, `html`
 
@@ -61,7 +62,7 @@ $ opc foo.yml --transfrom html
 ```
 
 # Traversing the `DOM`
-## `opc <stdin/file/url> locator [locator...]`
+## `opc <file/url> locator [locator...]`
 
 ```bash
 # example.html: <title>foo</title>
@@ -82,7 +83,7 @@ $ opc example.json "li a"?href # booooop
 Get [text()](https://github.com/cheeriojs/cheerio#-selector-context-root-) if selector hasn't `?attribute`.
 
 # Get the value of `Object`
-## `opc <stdin/file/url> path [path...]`
+## `opc <file/url> path [path...]`
 
 ```bash
 # bower.json: {"name":"bar","ignore":["baz","beep","boop"]}
@@ -97,6 +98,12 @@ $ opc .travis.yml language # node_js
 Note: extension __`.json`__ is optional.
 
 > `path` is https://lodash.com/docs#get
+
+# Options
+## `-s`, `--separator`
+```bash
+$ opc bower name ignore --separator " && " # bar && baz && beep && boop
+```
 
 License
 ---
