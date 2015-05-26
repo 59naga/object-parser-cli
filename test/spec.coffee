@@ -116,3 +116,12 @@ describe 'CLI',->
 
         expect(stdout).toBe 'node_js'
         done()
+
+  describe 'Change separator',->
+    it '$ opc package files',(done)->
+      $opc 'package files --separator "&&"'
+      .spread (cli,stdout)->
+
+        expect(stdout).toBe pkg.files.join '&&'
+        done()
+  

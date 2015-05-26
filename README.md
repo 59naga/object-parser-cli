@@ -98,6 +98,12 @@ Note: extension __`.json`__ is optional.
 
 > `path` is https://lodash.com/docs#get
 
+# Options
+## `-s`, `--separator`
+```bash
+$ opc bower name ignore --separator " && " # bar && baz && beep && boop
+```
+
 License
 ---
 [MIT][License]

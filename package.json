@@ -1,6 +1,6 @@
 {
   "name": "object-parser-cli",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha.0",
   "description": "Object preprocessor",
 
   "bin": {
@@ -14,20 +14,20 @@
 
   "config": {
     "ghooks": {
-      "pre-commit": "npm run cover"
+      "pre-commit": "npm run test"
     }
   },
   "scripts": {
-    "cover": "jasminetea test --verbose --cover --report --timeout 1000",
+    "default": "jasminetea test --verbose --timeout 1000",
 
     "Developer commands": "",
-      "start": "$(jqn package scripts.cover) --watch",
+      "start": "$(opc package scripts.default) --watch",
 
     "Travis-CI commands": "",
-      "test": "npm run cover",
+      "test": "$(opc package scripts.default) --cover --report",
 
     "Npm update via Travis-CI": "",
-      "prepublish": "if [ $TRAVIS_BUILD_PASSED ]; then npm run compile; fi",
+      "prepublish": "node -e \"if(process.env.TRAVIS){}else{process.exit(1)}\" && npm run compile || echo skip prepublish",
       
       "compile": "coffee --bare --compile index.coffee",
       "postcompile": "coffee --output lib --bare --compile src"
@@ -42,8 +42,10 @@
   "devDependencies": {
     "coffee-script": "^1.9.2",
     "ghooks": "^0.3.2",
-    "jasminetea": "^0.2.0-alpha.3",
-    "jqn": "0.0.3"
+    "jasminetea": "^0.2.0-alpha.3"
+  },
+  "globalDependencies": {
+    "object-parser-cli": "0.0.0"
   },
 
   "keywords": [

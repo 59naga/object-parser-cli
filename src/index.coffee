@@ -18,6 +18,7 @@ class CLI extends CommandFile
     @usage '<stdin/file/url> [path/locator...] [options...]'
     @option '-t, --transform <type>','Transform to <json/json5/yaml/html>'
     @option '-i, --indent <digit>','Adjust indents <2>',2
+    @option '-s, --separator <string>','Change separator (default:" ")',' '
 
   getType: (data)->
     switch data[0]
@@ -44,19 +45,19 @@ class CLI extends CommandFile
               dom= cheerio.load OP.stringify 'jsonml',data
 
               values= @find dom,@args
-              values.join ' '
+              values.join @separator
 
             when 'html'
               dom= cheerio.load data
 
               values= @find dom,@args
-              values.join ' '
+              values.join @separator
 
             else
               object= OP.parse type,data
 
               values= @get object,@args
-              values.join ' '
+              values.join @separator
 
       else
         @transform?= 'json'
@@ -90,7 +91,7 @@ class CLI extends CommandFile
       value= _.get object,path
 
       if value instanceof Array
-        value.join ' '
+        value.join @separator
       else
         value
 
